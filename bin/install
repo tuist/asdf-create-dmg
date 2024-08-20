@@ -9,3 +9,7 @@ plugin_dir=$(dirname "$(dirname "$current_script_path")")
 source "${plugin_dir}/lib/utils.bash"
 
 install_version "$ASDF_INSTALL_TYPE" "$ASDF_INSTALL_VERSION" "$ASDF_INSTALL_PATH"
+# `create-dmg` makes assumptions about the path to the `support` directory.
+# mise installation is more akin to cloning the repo, so we fake being in it.
+# https://github.com/create-dmg/create-dmg/blob/32121505917f6eb83c9a5144a80e4f5c95557fef/create-dmg#L317
+touch "$ASDF_INSTALL_PATH/bin/.this-is-the-create-dmg-repo"
